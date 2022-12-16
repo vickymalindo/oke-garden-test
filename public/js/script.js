@@ -7,19 +7,16 @@ const nav = document.querySelector("nav");
 const wrapperDates = document.querySelector(".dates");
 
 for (let i = 1; i <= 34; i++) {
+    const div = document.createElement("div");
+    const h4 = document.createElement("h4");
     if (i <= 3) {
-        const h4 = document.createElement("h4");
         h4.textContent = "1";
-        h4.classList.add("hidden");
-        wrapperDates.appendChild(h4);
+        div.classList.add("hidden");
     } else {
-        const div = document.createElement("div");
-        const h4 = document.createElement("h4");
         h4.textContent = i - 3;
         if (i === 11) {
             div.classList.add("active");
         }
-        div.appendChild(h4);
         div.addEventListener("click", () => {
             removeClassOfDates();
             div.classList.add("active");
@@ -27,8 +24,9 @@ for (let i = 1; i <= 34; i++) {
             const text = h4Tag[0].innerHTML;
             targetDate.innerHTML = text;
         });
-        wrapperDates.appendChild(div);
     }
+    div.appendChild(h4);
+    wrapperDates.appendChild(div);
 }
 
 const dates = document.querySelectorAll(".dates div");
